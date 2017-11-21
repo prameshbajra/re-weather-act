@@ -5,8 +5,7 @@ import MainComponent from "MainComponent";
 
 ReactDOM.render(
     <Router history={hashHistory}>
-        <Route path="/" component={MainComponent}>
-
+        <Route path="/" component={MainComponent} >
         </Route>
     </Router>,
     document.getElementById("app")
