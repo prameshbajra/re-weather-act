@@ -2505,7 +2505,7 @@ var _AboutComponent2 = _interopRequireDefault(_AboutComponent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
+    _reactRouterDom.HashRouter,
     null,
     _react2.default.createElement(_reactRouterDom.Route, { path: "/", component: _MainComponent2.default })
 ), document.getElementById("app"));
