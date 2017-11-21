@@ -9,7 +9,10 @@ module.exports = {
         alias: {
             // Add key value pair for your imports ...
             MainComponent: "app/components/MainComponent.jsx",
-            NavComponent: "app/components/NavComponent.jsx"
+            NavComponent: "app/components/NavComponent.jsx",
+            WeatherComponent: "app/components/WeatherComponent.jsx",
+            AboutComponent: "app/components/AboutComponent.jsx",
+            ExamplesComponent: "app/components/ExamplesComponent.jsx"
         },
         extensions: ["*", ".js", ".jsx"]
     },

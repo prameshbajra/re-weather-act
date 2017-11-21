@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
-import MainComponent from "MainComponent";
+import { Route, BrowserRouter } from "react-router-dom";
 
+import MainComponent from "MainComponent";
+import WeatherComponent from "WeatherComponent";
+import AboutComponent from "AboutComponent";
 
 ReactDOM.render(
     <BrowserRouter>
