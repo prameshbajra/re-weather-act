@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class NavComponent extends React.Component {
     render() {
         return (
             <div>
                 <h2>Nav Bar here ..</h2>
-                <Link to="/">Weather</Link>
-                <Link to="/about">About</Link>
-                <Link to="/examples">Examples</Link>
+                <NavLink exact to="/" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>Weather</NavLink>
+                <NavLink to="/about" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>About</NavLink>
+                <NavLink to="/examples" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>Examples</NavLink>
             </div>
         );
     }

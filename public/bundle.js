@@ -23564,18 +23564,18 @@ var NavComponent = function (_React$Component) {
                     "Nav Bar here .."
                 ),
                 _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: "/" },
+                    _reactRouterDom.NavLink,
+                    { exact: true, to: "/", activeClassName: "active", activeStyle: { fontWeight: "bold" } },
                     "Weather"
                 ),
                 _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: "/about" },
+                    _reactRouterDom.NavLink,
+                    { to: "/about", activeClassName: "active", activeStyle: { fontWeight: "bold" } },
                     "About"
                 ),
                 _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: "/examples" },
+                    _reactRouterDom.NavLink,
+                    { to: "/examples", activeClassName: "active", activeStyle: { fontWeight: "bold" } },
                     "Examples"
                 )
             );
