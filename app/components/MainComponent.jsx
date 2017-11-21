@@ -1,9 +1,13 @@
-import { React } from "react";
+import React from "react";
+import NavComponent from "NavComponent";
 
 class MainComponent extends React.Component {
     render() {
         return (
-            <h2>Main component</h2>
+            <div>
+                <NavComponent />
+                <h1>Super cool</h1>
+            </div>
         );
     }
 }

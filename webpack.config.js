@@ -8,7 +8,8 @@ module.exports = {
         modules: [__dirname, "node_modules"],
         alias: {
             // Add key value pair for your imports ...
-            MainComponent: "app/components/MainComponent.jsx"
+            MainComponent: "app/components/MainComponent.jsx",
+            NavComponent: "app/components/NavComponent.jsx"
         },
         extensions: ["*", ".js", ".jsx"]
     },
