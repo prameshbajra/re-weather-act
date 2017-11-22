@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import GetWeatherFormComponent from "GetWeatherFormComponent";
 import GetWeatherDataComponent from "GetWeatherDataComponent";
+const { getTemp } = require("OpenWeatherMap");
 
 class WeatherComponent extends React.Component {
     constructor(props) {
@@ -20,11 +21,16 @@ class WeatherComponent extends React.Component {
         }
     }
     handleSearch(locationVal) {
-        this.setState({
-            locationVal: locationVal,
-            temp: 23
+        console.log(getTemp(locationVal));
+        getTemp(locationVal).then((data) => {
+            this.setState({
+                locationVal: locationVal,
+                temp: 20
+                // yo temp lai paxi api milayera temp hallney !!
+            });
+        }, (errorMsg) => {
+            console.log("Error", errorMsg);
         });
-        console.log(this.state.locationVal);
     }
     render() {
         return (
