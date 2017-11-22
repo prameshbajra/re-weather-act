@@ -2446,7 +2446,7 @@ var _GetWeatherFormComponent = __webpack_require__(79);
 
 var _GetWeatherFormComponent2 = _interopRequireDefault(_GetWeatherFormComponent);
 
-var _GetWeatherDataComponent = __webpack_require__(81);
+var _GetWeatherDataComponent = __webpack_require__(80);
 
 var _GetWeatherDataComponent2 = _interopRequireDefault(_GetWeatherDataComponent);
 
@@ -2461,13 +2461,29 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var WeatherComponent = function (_React$Component) {
     _inherits(WeatherComponent, _React$Component);
 
-    function WeatherComponent() {
+    function WeatherComponent(props) {
         _classCallCheck(this, WeatherComponent);
 
-        return _possibleConstructorReturn(this, (WeatherComponent.__proto__ || Object.getPrototypeOf(WeatherComponent)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (WeatherComponent.__proto__ || Object.getPrototypeOf(WeatherComponent)).call(this, props));
+
+        _this.state = {
+            locationVal: _this.props.locationVal,
+            temp: _this.props.temp
+        };
+        _this.handleSearch = _this.handleSearch.bind(_this);
+        return _this;
     }
 
     _createClass(WeatherComponent, [{
+        key: "handleSearch",
+        value: function handleSearch(locationVal) {
+            this.setState({
+                locationVal: locationVal,
+                temp: 23
+            });
+            console.log(this.state.locationVal);
+        }
+    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
@@ -2483,9 +2499,17 @@ var WeatherComponent = function (_React$Component) {
                     null,
                     "(City , Town etc)"
                 ),
-                _react2.default.createElement(_GetWeatherFormComponent2.default, null),
-                _react2.default.createElement(_GetWeatherDataComponent2.default, null)
+                _react2.default.createElement(_GetWeatherFormComponent2.default, { onSearch: this.handleSearch }),
+                _react2.default.createElement(_GetWeatherDataComponent2.default, { locationVal: this.state.locationVal, temp: this.state.temp })
             );
+        }
+    }], [{
+        key: "defaultProps",
+        get: function get() {
+            return {
+                locationVal: "Kathmandu",
+                temp: 30
+            };
         }
     }]);
 
@@ -23488,7 +23512,7 @@ var _WeatherComponent = __webpack_require__(36);
 
 var _WeatherComponent2 = _interopRequireDefault(_WeatherComponent);
 
-var _ExamplesComponent = __webpack_require__(80);
+var _ExamplesComponent = __webpack_require__(81);
 
 var _ExamplesComponent2 = _interopRequireDefault(_ExamplesComponent);
 
@@ -23636,13 +23660,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var GetWeatherFormComponent = function (_React$Component) {
     _inherits(GetWeatherFormComponent, _React$Component);
 
-    function GetWeatherFormComponent() {
+    function GetWeatherFormComponent(props) {
         _classCallCheck(this, GetWeatherFormComponent);
 
-        return _possibleConstructorReturn(this, (GetWeatherFormComponent.__proto__ || Object.getPrototypeOf(GetWeatherFormComponent)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (GetWeatherFormComponent.__proto__ || Object.getPrototypeOf(GetWeatherFormComponent)).call(this, props));
+
+        _this.formSubmit = _this.formSubmit.bind(_this);
+        return _this;
     }
 
     _createClass(GetWeatherFormComponent, [{
+        key: "formSubmit",
+        value: function formSubmit(e) {
+            e.preventDefault();
+            var locationVal = this.refs.locationVal.value;
+            if (locationVal.length > 0) {
+                this.refs.locationVal.value = "";
+                // think of this as using onSearch attribute from WeatherComponent's form ...
+                this.props.onSearch(locationVal);
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
@@ -23650,8 +23688,8 @@ var GetWeatherFormComponent = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     "form",
-                    null,
-                    _react2.default.createElement("input", { type: "text" }),
+                    { onSubmit: this.formSubmit },
+                    _react2.default.createElement("input", { type: "text", ref: "locationVal" }),
                     _react2.default.createElement(
                         "button",
                         null,
@@ -23669,6 +23707,62 @@ exports.default = GetWeatherFormComponent;
 
 /***/ }),
 /* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var GetWeatherFormData = function (_React$Component) {
+    _inherits(GetWeatherFormData, _React$Component);
+
+    function GetWeatherFormData(props) {
+        _classCallCheck(this, GetWeatherFormData);
+
+        return _possibleConstructorReturn(this, (GetWeatherFormData.__proto__ || Object.getPrototypeOf(GetWeatherFormData)).call(this, props));
+    }
+
+    _createClass(GetWeatherFormData, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "h3",
+                    null,
+                    this.props.locationVal,
+                    _react2.default.createElement("br", null),
+                    this.props.temp
+                )
+            );
+        }
+    }]);
+
+    return GetWeatherFormData;
+}(_react2.default.Component);
+
+exports.default = GetWeatherFormData;
+
+/***/ }),
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23716,56 +23810,6 @@ var ExamplesComponent = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ExamplesComponent;
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var GetWeatherFormData = function (_React$Component) {
-    _inherits(GetWeatherFormData, _React$Component);
-
-    function GetWeatherFormData() {
-        _classCallCheck(this, GetWeatherFormData);
-
-        return _possibleConstructorReturn(this, (GetWeatherFormData.__proto__ || Object.getPrototypeOf(GetWeatherFormData)).apply(this, arguments));
-    }
-
-    _createClass(GetWeatherFormData, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "h3",
-                null,
-                "OK this is the weather here."
-            );
-        }
-    }]);
-
-    return GetWeatherFormData;
-}(_react2.default.Component);
-
-exports.default = GetWeatherFormData;
 
 /***/ })
 /******/ ]);

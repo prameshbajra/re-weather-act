@@ -1,9 +1,14 @@
 import React from "react";
 
 class GetWeatherFormData extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
-            <h3>OK this is the weather here.</h3>
+            <div>
+                <h3>{this.props.locationVal}<br />{this.props.temp}</h3>
+            </div>
         );
     }
 }
