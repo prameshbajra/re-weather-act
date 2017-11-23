@@ -22,10 +22,10 @@ class WeatherComponent extends React.Component {
     }
     handleSearch(locationVal) {
         console.log(getTemp(locationVal));
-        getTemp(locationVal).then((data) => {
+        getTemp(locationVal).then((temp) => {
             this.setState({
                 locationVal: locationVal,
-                temp: 20
+                temp: temp
                 // yo temp lai paxi api milayera temp hallney !!
             });
         }, (errorMsg) => {

@@ -2893,10 +2893,10 @@ var WeatherComponent = function (_React$Component) {
             var _this2 = this;
 
             console.log(getTemp(locationVal));
-            getTemp(locationVal).then(function (data) {
+            getTemp(locationVal).then(function (temp) {
                 _this2.setState({
                     locationVal: locationVal,
-                    temp: 20
+                    temp: temp
                     // yo temp lai paxi api milayera temp hallney !!
                 });
             }, function (errorMsg) {
@@ -24469,17 +24469,20 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var apiKey = "5166439cd0e20c4d37126f6a088eb3ea";
-var OPEN_WEATHER_MAP_URL = "http://samples.openweathermap.org/data/2.5/weather?appid=" + apiKey + "&units=metric";
+var OPEN_WEATHER_MAP_URL = "http://api.openweathermap.org/data/2.5/find?appid=" + apiKey + "&units=metric";
 
 var getTemp = exports.getTemp = function getTemp(locationVal) {
     var encodeLocation = encodeURIComponent(locationVal);
     var requestURL = OPEN_WEATHER_MAP_URL + "&q=" + encodeLocation;
 
     return _axios2.default.get(requestURL).then(function (res) {
-        if (res.data.cod && res.data.message) {
-            throw new Error(res.data.message);
+        console.log("Cod", res.data.cod);
+        console.log("Message", res.data.message);
+        console.log("Temp", res.data);
+        if (res.cod && res.message) {
+            throw new Error(res.message);
         } else {
-            return res.data;
+            return res.data.list[0].main.temp;
         }
     }, function (res) {
         throw new Error(res.data.message);
