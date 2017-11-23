@@ -9,9 +9,6 @@ export const getTemp = (locationVal) => {
 
     return axios.get(requestURL)
         .then((res) => {
-            console.log("Cod", res.data.cod);
-            console.log("Message", res.data.message);
-            console.log("Temp", res.data);
             if (res.cod && res.message) {
                 throw new Error(res.message);
             } else {

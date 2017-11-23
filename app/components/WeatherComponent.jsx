@@ -10,35 +10,46 @@ class WeatherComponent extends React.Component {
         super(props);
         this.state = {
             locationVal: this.props.locationVal,
-            temp: this.props.temp
+            temp: this.props.temp,
+            isLoading: this.props.isLoading
         };
         this.handleSearch = this.handleSearch.bind(this);
     }
     static get defaultProps() {
         return {
             locationVal: "Kathmandu",
-            temp: 30
+            temp: "We can find that for you!!",
+            isLoading: false
         }
     }
     handleSearch(locationVal) {
-        console.log(getTemp(locationVal));
+        this.setState({ isLoading: true });
         getTemp(locationVal).then((temp) => {
             this.setState({
                 locationVal: locationVal,
-                temp: temp
-                // yo temp lai paxi api milayera temp hallney !!
+                temp: temp,
+                isLoading: false
             });
         }, (errorMsg) => {
+            this.setState({ isLoading: false });
             console.log("Error", errorMsg);
         });
     }
     render() {
+        const { isLoading, temp, locationVal } = this.state;
+        const renderMessage = () => {
+            if (isLoading) {
+                return <h3>Loading weather ... Please wait !!</h3>
+            } else if (temp && locationVal) {
+                return <GetWeatherDataComponent locationVal={locationVal} temp={temp} />;
+            }
+        }
         return (
             <div>
                 <h2>Enter your location</h2>
                 <h6>(City , Town etc)</h6>
                 <GetWeatherFormComponent onSearch={this.handleSearch} />
-                <GetWeatherDataComponent locationVal={this.state.locationVal} temp={this.state.temp} />
+                {renderMessage()}
             </div>
         );
     }

@@ -2881,7 +2881,8 @@ var WeatherComponent = function (_React$Component) {
 
         _this.state = {
             locationVal: _this.props.locationVal,
-            temp: _this.props.temp
+            temp: _this.props.temp,
+            isLoading: _this.props.isLoading
         };
         _this.handleSearch = _this.handleSearch.bind(_this);
         return _this;
@@ -2892,20 +2893,37 @@ var WeatherComponent = function (_React$Component) {
         value: function handleSearch(locationVal) {
             var _this2 = this;
 
-            console.log(getTemp(locationVal));
+            this.setState({ isLoading: true });
             getTemp(locationVal).then(function (temp) {
                 _this2.setState({
                     locationVal: locationVal,
-                    temp: temp
-                    // yo temp lai paxi api milayera temp hallney !!
+                    temp: temp,
+                    isLoading: false
                 });
             }, function (errorMsg) {
+                _this2.setState({ isLoading: false });
                 console.log("Error", errorMsg);
             });
         }
     }, {
         key: "render",
         value: function render() {
+            var _state = this.state,
+                isLoading = _state.isLoading,
+                temp = _state.temp,
+                locationVal = _state.locationVal;
+
+            var renderMessage = function renderMessage() {
+                if (isLoading) {
+                    return _react2.default.createElement(
+                        "h3",
+                        null,
+                        "Loading weather ... Please wait !!"
+                    );
+                } else if (temp && locationVal) {
+                    return _react2.default.createElement(_GetWeatherDataComponent2.default, { locationVal: locationVal, temp: temp });
+                }
+            };
             return _react2.default.createElement(
                 "div",
                 null,
@@ -2920,7 +2938,7 @@ var WeatherComponent = function (_React$Component) {
                     "(City , Town etc)"
                 ),
                 _react2.default.createElement(_GetWeatherFormComponent2.default, { onSearch: this.handleSearch }),
-                _react2.default.createElement(_GetWeatherDataComponent2.default, { locationVal: this.state.locationVal, temp: this.state.temp })
+                renderMessage()
             );
         }
     }], [{
@@ -2928,7 +2946,8 @@ var WeatherComponent = function (_React$Component) {
         get: function get() {
             return {
                 locationVal: "Kathmandu",
-                temp: 30
+                temp: "We can find that for you!!",
+                isLoading: false
             };
         }
     }]);
@@ -24476,9 +24495,6 @@ var getTemp = exports.getTemp = function getTemp(locationVal) {
     var requestURL = OPEN_WEATHER_MAP_URL + "&q=" + encodeLocation;
 
     return _axios2.default.get(requestURL).then(function (res) {
-        console.log("Cod", res.data.cod);
-        console.log("Message", res.data.message);
-        console.log("Temp", res.data);
         if (res.cod && res.message) {
             throw new Error(res.message);
         } else {
