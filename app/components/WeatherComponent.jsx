@@ -30,9 +30,7 @@ class WeatherComponent extends React.Component {
                 temp: temp,
                 isLoading: false
             });
-            debugger;
         }, (errorMsg) => {
-            debugger;
             this.setState({
                 locationVal: "The location you entered was not found",
                 temp: "We are very sorry but we cannot find the location!",
