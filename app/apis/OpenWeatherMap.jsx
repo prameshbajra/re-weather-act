@@ -9,9 +9,11 @@ export const getTemp = (locationVal) => {
 
     return axios.get(requestURL)
         .then((res) => {
-            if (res.cod && res.message) {
-                throw new Error(res.message);
+            if (res.data.list.length === 0) {
+                debugger;
+                throw new Error(res.data.message);
             } else {
+                debugger;
                 return res.data.list[0].main.temp;
             }
         }, (res) => {
