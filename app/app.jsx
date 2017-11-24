@@ -6,6 +6,9 @@ import MainComponent from "MainComponent";
 import WeatherComponent from "WeatherComponent";
 import AboutComponent from "AboutComponent";
 
+require("style-loader!css-loader!foundation-sites/dist/css/foundation.min.css");
+$(document).foundation();
+
 ReactDOM.render(
     <HashRouter>
         <Route path="/" component={MainComponent} >
