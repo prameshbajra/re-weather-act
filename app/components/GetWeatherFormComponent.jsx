@@ -17,8 +17,11 @@ class GetWeatherFormComponent extends React.Component {
         return (
             <div>
                 <form onSubmit={this.formSubmit}>
+                    <br />
                     <input type="text" ref="locationVal" />
-                    <button className="button">Get Weather</button>
+                    <br /><br />
+                    <hr />
+                    <button className="hollow button info expanded">Get Weather</button>
                 </form>
             </div>
         );

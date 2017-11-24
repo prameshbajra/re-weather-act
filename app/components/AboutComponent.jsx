@@ -7,7 +7,7 @@ class AboutComponent extends React.Component {
                 <br /><br />
                 <h3 className="text-center">About</h3>
                 <hr />
-                This small app was made to learn react, react router, foundation, webpack and many more. Doing this I just found that React is awesome and the debugging part is just beautiful.
+                This small web app was made to learn react, react router, foundation, webpack and many more. Doing this I just found that React is awesome and the debugging part is just beautiful.
                 <hr />
                 <ul className="vcard">
                     <li className="fn">Pramesh Bajracharya</li>

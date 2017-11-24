@@ -14,7 +14,7 @@ class NavComponent extends React.Component {
             <div className="top-bar">
                 <div className="top-bar-left">
                     <ul className="menu">
-                        <li className="menu-text">Weather On</li>
+                        <li className="menu-text">Weather By - Bajracharya</li>
                         <li>
                             <NavLink exact to="/" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>Weather</NavLink>
                         </li>
@@ -34,7 +34,7 @@ class NavComponent extends React.Component {
                                     <input type="search" placeholder="Search here ..." />
                                 </li>
                                 <li>
-                                    <button className="button">Get Weather</button>
+                                    <button className="hollow button info ">Get Weather</button>
                                 </li>
                             </ul>
                         </form>

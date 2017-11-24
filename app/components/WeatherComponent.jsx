@@ -43,7 +43,7 @@ class WeatherComponent extends React.Component {
         const { isLoading, temp, locationVal } = this.state;
         const renderMessage = () => {
             if (isLoading) {
-                return <h3>Loading weather ... Please wait !!</h3>
+                return <h3 className="text-center">Loading weather ... Please wait !!</h3>
             } else if (temp && locationVal) {
                 return <GetWeatherDataComponent locationVal={locationVal} temp={temp} />;
             }
