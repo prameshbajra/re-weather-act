@@ -50,8 +50,9 @@ class WeatherComponent extends React.Component {
         }
         return (
             <div>
-                <h2>Enter your location</h2>
-                <h6>(City , Town etc)</h6>
+                <br /><br />
+                <h3 className="text-centered">Enter your location</h3>
+                <h6 className="text-centered">(City , Town etc)</h6>
                 <GetWeatherFormComponent onSearch={this.handleSearch} />
                 {renderMessage()}
             </div>

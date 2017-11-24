@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 class NavComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.onSearch = this.onSearch.bind(this);
     }
     onSearch(e) {
         e.preventDefault();
@@ -25,7 +24,6 @@ class NavComponent extends React.Component {
                         <li>
                             <NavLink to="/examples" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>Examples</NavLink>
                         </li>
-
                     </ul>
                 </div>
                 <div className="top-bar-right">
@@ -36,7 +34,7 @@ class NavComponent extends React.Component {
                                     <input type="search" placeholder="Search here ..." />
                                 </li>
                                 <li>
-                                    <input type="button" className="button" value="Get Weather" />
+                                    <button className="button">Get Weather</button>
                                 </li>
                             </ul>
                         </form>

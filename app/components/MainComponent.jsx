@@ -11,12 +11,15 @@ class MainComponent extends React.Component {
         return (
             <div>
                 <NavComponent />
-                <h1>Super cool</h1>
-                <Switch>
-                    <Route path="/examples" component={ExamplesComponent} />
-                    <Route path="/about" component={AboutComponent} />
-                    <Route exact path="/" component={WeatherComponent} />
-                </Switch>
+                <div className="row">
+                    <div className="columns medium-6 large-6 small-centered">
+                        <Switch>
+                            <Route path="/examples" component={ExamplesComponent} />
+                            <Route path="/about" component={AboutComponent} />
+                            <Route exact path="/" component={WeatherComponent} />
+                        </Switch>
+                    </div>
+                </div>
             </div>
         );
     }

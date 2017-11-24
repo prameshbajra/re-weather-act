@@ -6,7 +6,7 @@ import MainComponent from "MainComponent";
 import WeatherComponent from "WeatherComponent";
 import AboutComponent from "AboutComponent";
 
-require("style-loader!css-loader!foundation-sites/dist/css/foundation.min.css");
+require("style-loader!css-loader!foundation-sites/dist/css/foundation-float.min.css");
 $(document).foundation();
 
 ReactDOM.render(
