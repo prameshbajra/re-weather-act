@@ -17,7 +17,7 @@ class WeatherComponent extends React.Component {
     }
     static get defaultProps() {
         return {
-            locationVal: "Kathmandu",
+            locationVal: "Weather you say?",
             temp: "We can find that for you!!",
             isLoading: false
         }
@@ -51,8 +51,8 @@ class WeatherComponent extends React.Component {
         return (
             <div>
                 <br /><br />
-                <h3 className="text-centered">Enter your location</h3>
-                <h6 className="text-centered">(City , Town etc)</h6>
+                <h3 className="text-center">Enter your location</h3>
+                <h6 className="text-center">(City , Town etc)</h6>
                 <GetWeatherFormComponent onSearch={this.handleSearch} />
                 {renderMessage()}
             </div>

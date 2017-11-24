@@ -6,8 +6,8 @@ class ExamplesComponent extends React.Component {
         return (
             <div>
                 <br /><br />
-                <h3 className="text-centered">Examples</h3>
-                <p className="text-centered">Some examples are mentioned below!</p>
+                <h3 className="text-center">Examples</h3>
+                <p className="text-center">Some examples are mentioned below!</p>
                 <ol>
                     <li>
                         <NavLink to="/?location=Kathmandu">Kathmandu, Nepal</NavLink>
