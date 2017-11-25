@@ -11,7 +11,7 @@ class NavComponent extends React.Component {
     }
     render() {
         return (
-            <div className="top-bar">
+            <div className="top-bar" id="topBar">
                 <div className="top-bar-left">
                     <ul className="menu">
                         <li className="menu-text">Weather By - Bajracharya</li>
