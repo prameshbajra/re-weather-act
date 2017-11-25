@@ -1,4 +1,6 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import ReactDOMServer from "react-dom/server"
 import PropTypes from "prop-types";
 
 class ErrorComponent extends React.Component {
@@ -13,12 +15,8 @@ class ErrorComponent extends React.Component {
         errorMessage: PropTypes.string.isRequired
     };
     componentDidMount() {
-        const modal = new Foundation.Reveal($("#error-modal"));
-        modal.open();
-    }
-    render() {
         const { title, errorMessage } = this.props;
-        return (
+        const skeletonMark = (
             <div className="reveal tiny text-center" id="error-modal" data-reveal="">
                 <h3 className="text-center">{title}</h3>
                 <p>{errorMessage}</p>
@@ -28,6 +26,17 @@ class ErrorComponent extends React.Component {
                     </button>
                 </p>
             </div>
+        );
+
+        const $modal = $(ReactDOMServer.renderToString(skeletonMark));
+        $(ReactDOM.findDOMNode(this)).html($modal);
+
+        const modal = new Foundation.Reveal($("#error-modal"));
+        modal.open();
+    }
+    render() {
+        return (
+            <div></div>
         );
     }
 }
