@@ -7,7 +7,7 @@ class NavComponent extends React.Component {
     }
     onSearch(e) {
         e.preventDefault();
-        alert("Not complete !! Wiring up left !!");
+        alert(this.refs.search);
     }
     render() {
         return (
@@ -31,7 +31,7 @@ class NavComponent extends React.Component {
                         <form onSubmit={this.onSearch}>
                             <ul className="menu">
                                 <li>
-                                    <input type="search" placeholder="Search here ..." />
+                                    <input type="search" ref="searchVal" placeholder="Search here ..." />
                                 </li>
                                 <li>
                                     <button className="hollow button info ">Get Weather</button>

@@ -23,6 +23,16 @@ class WeatherComponent extends React.Component {
         isLoading: false,
         errorMessage: undefined
     }
+    componentDidMount() {
+        const query = this.props.location.search;
+        if (query.length > 0) {
+            const locationVal = query.slice(10, query.length);
+            if (locationVal && locationVal.length > 0) {
+                this.handleSearch(locationVal);
+                window.location.hash = "/";
+            }
+        }
+    }
     handleSearch(locationVal) {
         this.setState({ isLoading: true });
         getTemp(locationVal).then((temp) => {
