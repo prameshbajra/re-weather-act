@@ -17,13 +17,11 @@ class WeatherComponent extends React.Component {
         };
         this.handleSearch = this.handleSearch.bind(this);
     }
-    static get defaultProps() {
-        return {
-            locationVal: "Weather you say?",
-            temp: "We can find that for you!!",
-            isLoading: false,
-            errorMessage: undefined
-        }
+    static defaultProps = {
+        locationVal: "Weather you say?",
+        temp: "We can find that for you!!",
+        isLoading: false,
+        errorMessage: undefined
     }
     handleSearch(locationVal) {
         this.setState({ isLoading: true });
@@ -38,14 +36,13 @@ class WeatherComponent extends React.Component {
                 locationVal: this.props.locationVal,
                 temp: this.props.temp,
                 isLoading: false,
-                errorMessage: errorMsg.message
+                errorMessage: "We cannot find the location. Does it exist? We haven't heard of it. Sorry!"
             });
         });
 
     }
     render() {
         const { isLoading, temp, locationVal, errorMessage } = this.state;
-
         const renderMessage = () => {
             if (isLoading) {
                 return <h3 className="text-center">Loading weather ... Please wait !!</h3>
@@ -53,15 +50,13 @@ class WeatherComponent extends React.Component {
                 return <GetWeatherDataComponent locationVal={locationVal} temp={temp} />;
             }
         }
-
         const renderError = () => {
             if (typeof errorMessage === "string") {
                 return (
-                    <ErrorComponent />
+                    <ErrorComponent errorMessage={errorMessage} />
                 );
             }
         }
-
         return (
             <div>
                 <br /><br />

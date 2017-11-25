@@ -39,7 +39,7 @@ module.exports = {
         rules: [{
             loader: "babel-loader",
             query: {
-                presets: ["react", "env"]
+                presets: ["react", "env", "stage-0"]
             },
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/
