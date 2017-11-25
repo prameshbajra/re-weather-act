@@ -25,6 +25,7 @@ class WeatherComponent extends React.Component {
     }
     componentDidMount() {
         const query = this.props.location.search;
+        // this if is required because we dont want anything happening when url doesnt have a query parameter ...
         if (query.length > 0) {
             const locationVal = query.slice(10, query.length);
             if (locationVal && locationVal.length > 0) {

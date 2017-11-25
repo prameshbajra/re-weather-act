@@ -15,6 +15,19 @@ class ExamplesComponent extends React.Component {
                     <li>
                         <NavLink to="/?location=California">San Francisco, California</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/?location=Lalitpur">Lalitpur, Nepal</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/?location=Bhaktapur">Bhaktapur, Nepal</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/?location=Palpa">Palpa, Nepal</NavLink>
+                    </li>
+                    <li>
+                        {/* show this to biraj :D */}
+                        <NavLink to="/?location=Africa">Nepaljung, Nepal</NavLink>
+                    </li>
                 </ol>
             </div>
         );
