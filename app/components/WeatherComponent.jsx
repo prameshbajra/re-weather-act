@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import GetWeatherFormComponent from "GetWeatherFormComponent";
 import GetWeatherDataComponent from "GetWeatherDataComponent";
+import ErrorComponent from "ErrorComponent";
 const { getTemp } = require("OpenWeatherMap");
 
 class WeatherComponent extends React.Component {
@@ -11,7 +12,8 @@ class WeatherComponent extends React.Component {
         this.state = {
             locationVal: this.props.locationVal,
             temp: this.props.temp,
-            isLoading: this.props.isLoading
+            isLoading: this.props.isLoading,
+            errorMessage: this.props.errorMessage
         };
         this.handleSearch = this.handleSearch.bind(this);
     }
@@ -19,7 +21,8 @@ class WeatherComponent extends React.Component {
         return {
             locationVal: "Weather you say?",
             temp: "We can find that for you!!",
-            isLoading: false
+            isLoading: false,
+            errorMessage: undefined
         }
     }
     handleSearch(locationVal) {
@@ -32,15 +35,17 @@ class WeatherComponent extends React.Component {
             });
         }, (errorMsg) => {
             this.setState({
-                locationVal: "The location you entered was not found",
-                temp: "We are very sorry but we cannot find the location!",
-                isLoading: false
+                locationVal: this.props.locationVal,
+                temp: this.props.temp,
+                isLoading: false,
+                errorMessage: errorMsg.message
             });
         });
 
     }
     render() {
-        const { isLoading, temp, locationVal } = this.state;
+        const { isLoading, temp, locationVal, errorMessage } = this.state;
+
         const renderMessage = () => {
             if (isLoading) {
                 return <h3 className="text-center">Loading weather ... Please wait !!</h3>
@@ -48,6 +53,15 @@ class WeatherComponent extends React.Component {
                 return <GetWeatherDataComponent locationVal={locationVal} temp={temp} />;
             }
         }
+
+        const renderError = () => {
+            if (typeof errorMessage === "string") {
+                return (
+                    <ErrorComponent />
+                );
+            }
+        }
+
         return (
             <div>
                 <br /><br />
@@ -55,6 +69,7 @@ class WeatherComponent extends React.Component {
                 <h6 className="text-center">(City , Town etc)</h6>
                 <GetWeatherFormComponent onSearch={this.handleSearch} />
                 {renderMessage()}
+                {renderError()}
             </div>
         );
     }
