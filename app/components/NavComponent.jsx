@@ -4,10 +4,16 @@ import { NavLink } from "react-router-dom";
 class NavComponent extends React.Component {
     constructor(props) {
         super(props);
+        this.onSearch = this.onSearch.bind(this);
     }
     onSearch(e) {
         e.preventDefault();
-        alert(this.refs.search);
+        const locationVal = this.refs.searchVal.value;
+        const encodedLocation = encodeURIComponent(locationVal);
+        if (locationVal.length > 0) {
+            this.refs.searchVal.value = "";
+            window.location.hash = `#/?location=${encodedLocation}`;
+        }
     }
     render() {
         return (

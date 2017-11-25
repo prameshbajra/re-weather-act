@@ -34,6 +34,16 @@ class WeatherComponent extends React.Component {
             }
         }
     }
+    componentWillReceiveProps(newProps) {
+        const query = newProps.location.search;
+        if (query.length > 0) {
+            const locationVal = query.slice(10, query.length);
+            if (locationVal && locationVal.length > 0) {
+                this.handleSearch(locationVal);
+                window.location.hash = "/";
+            }
+        }
+    }
     handleSearch(locationVal) {
         this.setState({ isLoading: true });
         getTemp(locationVal).then((temp) => {
