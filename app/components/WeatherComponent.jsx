@@ -12,6 +12,8 @@ class WeatherComponent extends React.Component {
         this.state = {
             locationVal: this.props.locationVal,
             temp: this.props.temp,
+            pressure: this.props.pressure,
+            humidity: this.props.humidity,
             isLoading: this.props.isLoading,
             errorMessage: this.props.errorMessage
         };
@@ -20,6 +22,8 @@ class WeatherComponent extends React.Component {
     static defaultProps = {
         locationVal: undefined,
         temp: undefined,
+        pressure: undefined,
+        humidity: undefined,
         isLoading: false,
         errorMessage: undefined
     }
@@ -46,16 +50,20 @@ class WeatherComponent extends React.Component {
     }
     handleSearch(locationVal) {
         this.setState({ isLoading: true });
-        getTemp(locationVal).then((temp) => {
+        getTemp(locationVal).then((data) => {
             this.setState({
                 locationVal: locationVal,
-                temp: temp,
+                temp: data.temp,
+                pressure: data.pressure,
+                humidity: data.humidity,
                 isLoading: false
             });
         }, (errorMsg) => {
             this.setState({
                 locationVal: this.props.locationVal,
                 temp: this.props.temp,
+                pressure: this.props.pressure,
+                humidity: this.props.humidity,
                 isLoading: false,
                 errorMessage: "We cannot find the location. Does it exist? We haven't heard of it. Sorry!"
             });
@@ -63,12 +71,12 @@ class WeatherComponent extends React.Component {
 
     }
     render() {
-        const { isLoading, temp, locationVal, errorMessage } = this.state;
+        const { isLoading, temp, pressure, humidity, locationVal, errorMessage } = this.state;
         const renderMessage = () => {
             if (isLoading) {
                 return <h3 className="text-center">Loading weather ... Please wait !!</h3>
             } else if (temp && locationVal) {
-                return <GetWeatherDataComponent locationVal={locationVal} temp={temp} />;
+                return <GetWeatherDataComponent locationVal={locationVal} temp={temp} pressure={pressure} humidity={humidity} />;
             }
         }
         const renderError = () => {

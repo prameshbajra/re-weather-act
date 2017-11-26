@@ -6,9 +6,24 @@ class GetWeatherFormData extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h3 className="text-center"> It's {this.props.temp} degrees celcuis in {this.props.locationVal}</h3>
-            </div>
+            <table className="hover stack">
+                <thead>
+                    <tr>
+                        <th >City</th>
+                        <th >Temprature</th>
+                        <th >Pressure</th>
+                        <th >Humdity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{this.props.locationVal}</td>
+                        <td>{this.props.temp}</td>
+                        <td>{this.props.pressure}</td>
+                        <td>{this.props.humidity}</td>
+                    </tr>
+                </tbody>
+            </table>
         );
     }
 }

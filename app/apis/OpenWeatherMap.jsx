@@ -12,7 +12,7 @@ export const getTemp = (locationVal) => {
             if (res.data.list.length === 0) {
                 throw new Error(res.data.message);
             } else {
-                return res.data.list[0].main.temp;
+                return res.data.list[0].main;
             }
         }, (res) => {
             throw new Error(res.data.message)
