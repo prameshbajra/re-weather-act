@@ -18,8 +18,8 @@ class WeatherComponent extends React.Component {
         this.handleSearch = this.handleSearch.bind(this);
     }
     static defaultProps = {
-        locationVal: "Weather you say?",
-        temp: "We can find that for you!!",
+        locationVal: undefined,
+        temp: undefined,
         isLoading: false,
         errorMessage: undefined
     }

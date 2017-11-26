@@ -7,7 +7,7 @@ class GetWeatherFormData extends React.Component {
     render() {
         return (
             <div>
-                <h3 className="text-center"> {this.props.locationVal} <br />{this.props.temp}</h3>
+                <h3 className="text-center"> It's {this.props.temp} degrees celcuis in {this.props.locationVal}</h3>
             </div>
         );
     }
