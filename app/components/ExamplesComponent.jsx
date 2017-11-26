@@ -7,7 +7,7 @@ class ExamplesComponent extends React.Component {
             <div>
                 <br /><br />
                 <h3 className="text-center">Examples</h3>
-                <p className="text-center">Some examples are mentioned below!</p>
+                <p className="text-center">Click on the city below to directly jump to their weather</p>
                 <ol>
                     <li>
                         <NavLink to="/?location=Kathmandu">Kathmandu, Nepal</NavLink>

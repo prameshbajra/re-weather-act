@@ -10,9 +10,9 @@ class GetWeatherFormData extends React.Component {
                 <thead>
                     <tr>
                         <th >City</th>
-                        <th >Temprature</th>
-                        <th >Pressure</th>
-                        <th >Humdity</th>
+                        <th >Temprature (&deg;C)</th>
+                        <th >Pressure (mb)</th>
+                        <th >Humdity (%)</th>
                     </tr>
                 </thead>
                 <tbody>
